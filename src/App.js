@@ -44,7 +44,6 @@ function App() {
       <header className="App-header">
         <h1>💬 Chat Now!</h1>
         {user && <SignOut />}
-        {console.log("User:", user)}
       </header>
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
@@ -90,16 +89,12 @@ function ChatRoom() {
 
     const { uid, photoURL } = auth.currentUser;
 
-    console.log("UID being sent:", uid);
-
     await addDoc(messagesRef, {
       text: formValue,
       createdAt: serverTimestamp(),
       uid,
       photoURL,
     });
-
-    console.log("UID being sent:", uid);
 
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
